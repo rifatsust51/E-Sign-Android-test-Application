@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A0E17"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/employee_profile"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="24dp"
+            android:text="@string/fill_in_details_to_generate_your_pdf"
+            android:textSize="13sp"
+            android:textColor="#94A3B8" />
+
+        <!-- Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="#1E2433"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- Full Name -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilFullName"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/full_name"
+                    android:layout_marginBottom="14dp"
+                    app:errorEnabled="true"
+                    app:hintTextColor="#94A3B8"
+                    app:boxStrokeColor="#334155"
+                    android:textColorHint="#94A3B8">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etFullName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName|textCapWords"
+                        android:imeOptions="actionNext"
+                        android:textColor="#FFFFFF"
+                        android:textColorHint="#64748B" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Email -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilEmail"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/email_address"
+                    android:layout_marginBottom="14dp"
+                    app:errorEnabled="true"
+                    app:hintTextColor="#94A3B8"
+                    app:boxStrokeColor="#334155">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:imeOptions="actionNext"
+                        android:textColor="#FFFFFF"
+                        android:textColorHint="#64748B" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Phone -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilPhone"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/phone_number"
+                    android:layout_marginBottom="14dp"
+                    app:errorEnabled="true"
+                    app:prefixText="+880 "
+                    app:prefixTextColor="#94A3B8"
+                    app:hintTextColor="#94A3B8"
+                    app:boxStrokeColor="#334155">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="phone"
+                        android:maxLength="11"
+                        android:imeOptions="actionNext"
+                        android:textColor="#FFFFFF"
+                        android:textColorHint="#64748B" />
+
+                    <!-- ↑ ADDED: maxLength="11" to limit phone input -->
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- National ID -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilNid"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/national_id_nid"
+                    android:layout_marginBottom="14dp"
+                    app:errorEnabled="true"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="17"
+                    app:hintTextColor="#94A3B8"
+                    app:boxStrokeColor="#334155">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etNid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="17"
+                        android:imeOptions="actionNext"
+                        android:textColor="#FFFFFF"
+                        android:textColorHint="#64748B" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Date of Birth -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilDob"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/date_of_birth"
+                    android:layout_marginBottom="14dp"
+                    app:errorEnabled="true"
+                    app:endIconMode="custom"
+                    app:endIconDrawable="@android:drawable/ic_menu_my_calendar"
+                    app:endIconTint="#F59E0B"
+                    app:hintTextColor="#94A3B8"
+                    app:boxStrokeColor="#334155">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etDob"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:clickable="true"
+                        android:cursorVisible="false"
+                        android:inputType="none"
+                        android:textColor="#FFFFFF" />
+
+                    <!-- ↑ CHANGED:
+                         android:focusable="true" → android:focusable="false"
+                         ADDED: android:focusableInTouchMode="false"
+
+                         This ensures clicking opens the Material Date Picker
+                         instead of showing the keyboard -->
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Emergency Contact -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilEmergencyContact"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/emergency_contact_number"
+                    android:layout_marginBottom="8dp"
+                    app:errorEnabled="true"
+                    app:prefixText="+880 "
+                    app:prefixTextColor="#94A3B8"
+                    app:hintTextColor="#94A3B8"
+                    app:boxStrokeColor="#334155">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etEmergencyContact"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="phone"
+                        android:maxLength="11"
+                        android:imeOptions="actionDone"
+                        android:textColor="#FFFFFF"
+                        android:textColorHint="#64748B" />
+
+                    <!-- ↑ ADDED: maxLength="11" to limit emergency contact input -->
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGenerate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/generate_pdf_preview"
+                    android:textStyle="bold"
+                    android:padding="14dp"
+                    app:cornerRadius="12dp"
+                    app:backgroundTint="#F59E0B"
+                    android:textColor="#000000" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Footer -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/your_data_is_only_used_to_generate_this_document"
+            android:textSize="15sp"
+            android:textColor="#34D399"
+            android:gravity="center" />
+
+    </LinearLayout>
+</ScrollView>
