@@ -87,6 +87,7 @@ class TicThikNotificationInterceptor : NotificationListenerService() {
                 }
 
                 // STEP 3: Send broadcast WITHOUT setPackage
+                intent.setPackage(applicationContext.packageName)
                 sendBroadcast(intent)
                 Log.d("MFA_DEBUG", "Broadcast SENT (no setPackage restriction).")
 
@@ -96,5 +97,9 @@ class TicThikNotificationInterceptor : NotificationListenerService() {
         }
     }
 }
+
+
+
+//=============================================================
 
 
