@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1565C0"
+    android:fillViewport="true"
+    android:scrollbars="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- ── Top bar (Responsive height) ──────────────────────────────────── -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="64dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:background="#0D47A1">
+
+            <!-- Bank icon -->
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="🏦"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:background="@drawable/bg_bank_icon_circle"
+                android:layout_marginEnd="12dp"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bank Transfer"
+                    android:textSize="19sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Secure inter-bank transaction"
+                    android:textSize="11sp"
+                    android:textColor="#90CAF9"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ── Profile Card (Responsive) ─────────────────────────────────────── -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/profileCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#0D47A1"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+                <!-- Avatar -->
+                <FrameLayout
+                    android:layout_width="42dp"
+                    android:layout_height="42dp">
+                    <View
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:background="@drawable/bg_avatar_circle"/>
+                    <TextView
+                        android:id="@+id/tvProfileInitial"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="?"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF"/>
+                </FrameLayout>
+
+                <!-- Name / email / status -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="8dp">
+                    <TextView
+                        android:id="@+id/tvProfileName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Guest"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF"/>
+                    <TextView
+                        android:id="@+id/tvProfileEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Not logged in"
+                        android:textSize="11sp"
+                        android:textColor="#E3F2FD"
+                        android:layout_marginTop="1dp"/>
+                    <TextView
+                        android:id="@+id/tvProfileStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Guest mode"
+                        android:textSize="11sp"
+                        android:textColor="#90CAF9"
+                        android:layout_marginTop="1dp"/>
+                </LinearLayout>
+
+                <!-- Logout button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnLogout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="34dp"
+                    android:minWidth="72dp"
+                    android:text="Logout"
+                    android:textSize="11sp"
+                    android:textColor="#FFCDD2"
+                    app:cornerRadius="8dp"
+                    app:backgroundTint="#B71C1C"
+                    android:visibility="gone"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ── Divider ───────────────────────────────────────────────────────── -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#1976D2"/>
+
+        <!-- ── Main Form (Responsive padding) ────────────────────────────────── -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#1565C0"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="28dp">
+
+            <!-- ── Transfer Channel (Responsive tabs) ────────────────────────── -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TRANSFER CHANNEL"
+                android:textColor="#E3F2FD"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="8dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="46dp"
+                android:orientation="horizontal"
+                android:background="@drawable/bg_tab_container"
+                android:layout_marginBottom="20dp">
+                <TextView
+                    android:id="@+id/tabBeftn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:text="BEFTN"
+                    android:textSize="13sp"
+                    android:textColor="#90CAF9"/>
+                <TextView
+                    android:id="@+id/tabNpsb"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:text="NPSB"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/bg_tab_active"/>
+                <TextView
+                    android:id="@+id/tabRtgs"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:text="RTGS"
+                    android:textSize="13sp"
+                    android:textColor="#90CAF9"/>
+            </LinearLayout>
+
+            <!-- ── Transfer From ─────────────────────────────────────────────── -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TRANSFER FROM"
+                android:textColor="#E3F2FD"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="6dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilSourceAccount"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                app:hintTextColor="#E3F2FD"
+                app:boxStrokeColor="#E3F2FD"
+                app:boxStrokeWidth="1.5dp"
+                app:boxBackgroundColor="#0D3A7A"
+                app:endIconMode="clear_text"
+                app:endIconTint="#E3F2FD"
+                app:errorEnabled="true"
+                app:errorTextColor="#FF8A80">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etSourceAccount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Account / Card Number"
+                    android:inputType="number"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#90CAF9"
+                    android:textSize="15sp"
+                    android:imeOptions="actionNext"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Available Balance -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Available Balance"
+                    android:textColor="#E3F2FD"
+                    android:textSize="12sp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/tvAvailableBalance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="N/A"
+                    android:textColor="#FFD54F"
+                    android:textSize="12sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <!-- Info box (Responsive) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_info_box"
+                android:padding="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="• Min per transaction: BDT 50"
+                    android:textColor="#E3F2FD"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="2dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="• Max per transaction: BDT 300,000"
+                    android:textColor="#E3F2FD"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="2dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="• Max per day: BDT 500,000"
+                    android:textColor="#E3F2FD"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <!-- ── Beneficiary Account ───────────────────────────────────────── -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BENEFICIARY ACCOUNT"
+                android:textColor="#E3F2FD"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="6dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilBeneficiary"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:errorEnabled="true"
+                app:hintTextColor="#E3F2FD"
+                app:boxStrokeColor="#E3F2FD"
+                app:boxStrokeWidth="1.5dp"
+                app:boxBackgroundColor="#0D3A7A"
+                app:errorTextColor="#FF8A80">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etBeneficiary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Account Number"
+                    android:inputType="number"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#90CAF9"
+                    android:textSize="15sp"
+                    android:imeOptions="actionNext"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- ── Bank Name ─────────────────────────────────────────────────── -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BANK NAME"
+                android:textColor="#E3F2FD"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="6dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilBankName"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:errorEnabled="true"
+                app:hintTextColor="#E3F2FD"
+                app:boxStrokeColor="#E3F2FD"
+                app:boxStrokeWidth="1.5dp"
+                app:boxBackgroundColor="#0D3A7A"
+                app:errorTextColor="#FF8A80">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etBankName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Bank Name"
+                    android:inputType="textCapWords"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#90CAF9"
+                    android:textSize="15sp"
+                    android:imeOptions="actionNext"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- ── Transfer Amount ───────────────────────────────────────────── -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TRANSFER AMOUNT"
+                android:textColor="#E3F2FD"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="6dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilAmount"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:errorEnabled="true"
+                app:hintTextColor="#E3F2FD"
+                app:boxStrokeColor="#E3F2FD"
+                app:boxStrokeWidth="1.5dp"
+                app:boxBackgroundColor="#0D3A7A"
+                app:prefixText="BDT  "
+                app:prefixTextColor="#FFD54F"
+                app:errorTextColor="#FF8A80">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="0.00"
+                    android:inputType="numberDecimal"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#90CAF9"
+                    android:textSize="15sp"
+                    android:imeOptions="actionNext"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- ── Transfer Info ─────────────────────────────────────────────── -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TRANSFER INFO"
+                android:textColor="#E3F2FD"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="6dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilRemarks"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:hintTextColor="#E3F2FD"
+                app:boxStrokeColor="#E3F2FD"
+                app:boxStrokeWidth="1.5dp"
+                app:boxBackgroundColor="#0D3A7A">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etRemarks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Remarks (optional)"
+                    android:inputType="textMultiLine"
+                    android:minLines="2"
+                    android:maxLines="4"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#90CAF9"
+                    android:textSize="15sp"
+                    android:imeOptions="actionDone"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- ── OTP / e-Sign Channel (Responsive tabs) ─────────────────────── -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OTP CHANNEL"
+                android:textColor="#E3F2FD"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="8dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="46dp"
+                android:orientation="horizontal"
+                android:background="@drawable/bg_tab_container"
+                android:layout_marginBottom="12dp">
+
+                <!-- SMS tab -->
+                <TextView
+                    android:id="@+id/tabSms"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:text="SMS"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/bg_tab_active"/>
+
+                <!-- Email tab -->
+                <TextView
+                    android:id="@+id/tabEmail"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:text="Email"
+                    android:textSize="13sp"
+                    android:textColor="#90CAF9"/>
+
+                <!-- e-Sign tab (was "Push") -->
+                <TextView
+                    android:id="@+id/tabPush"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:text="e-Sign"
+                    android:textSize="13sp"
+                    android:textColor="#90CAF9"/>
+
+            </LinearLayout>
+
+            <!-- OTP info message -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ℹ "
+                    android:textSize="13sp"
+                    android:textColor="#64B5F6"/>
+                <TextView
+                    android:id="@+id/tvOtpInfo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="OTP will be sent to 880******4776"
+                    android:textColor="#E3F2FD"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+
+            <!-- ── Request Button (Responsive) ───────────────────────────────── -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRequest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="54dp"
+                android:text="Request OTP"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#FFFFFF"
+                android:letterSpacing="0.03"
+                app:cornerRadius="12dp"
+                app:backgroundTint="#F57F17"
+                app:rippleColor="#FFF9C4"
+                app:icon="@android:drawable/ic_dialog_email"
+                app:iconTint="#FFFFFF"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

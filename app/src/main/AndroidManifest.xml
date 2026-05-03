@@ -39,13 +39,24 @@
             android:exported="false" />
 
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".TransferMoneyActivity"
+            android:exported="true"
+            android:launchMode="standard">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".TransferConfirmationActivity"
+            android:exported="false"
+            android:launchMode="standard" />
+
+        <activity
+            android:name=".TransferSuccessActivity"
+            android:exported="false"
+            android:launchMode="standard" />
 
         <service
             android:name=".TicThikNotificationInterceptor"

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Secure Transfer</string>
     <string name="employee_profile">Employee Profile</string>
     <string name="fill_in_details_to_generate_your_pdf">Fill in details to generate your PDF</string>
     <string name="email_address">Email Address</string>
