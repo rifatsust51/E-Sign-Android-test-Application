@@ -65,6 +65,8 @@ import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManagerFactory
 import javax.net.ssl.X509TrustManager
 
+
+
 data class UserSession(
     val userId: String,
     val fullName: String,
@@ -282,6 +284,7 @@ class PdfPreviewActivity : AppCompatActivity() {
 
     // ── State ──────────────────────────────────────────────────────────────────
     private var base64PdfDocument: String?    = null
+    private var pendingCodeVerifier: String?  = null
     private var dynamicFileName: String       = "EmployeeProfile.pdf"
     private var currentSession: UserSession?  = null
     private var cachedSignedFile: File?       = null
@@ -349,31 +352,6 @@ class PdfPreviewActivity : AppCompatActivity() {
     }
 
     // ── Keycloak launcher ──────────────────────────────────────────────────────
-    private val keycloakLauncher =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                val authCode =
-                    result.data?.getStringExtra(KeycloakWebViewActivity.EXTRA_AUTH_CODE)
-                val codeVerifier =
-                    result.data?.getStringExtra(KeycloakWebViewActivity.EXTRA_CODE_VERIFIER)
-                if (authCode != null && codeVerifier != null) {
-                    runOnUiThread {
-                        btnLoginAndSign.text      = "Verifying login..."
-                        btnLoginAndSign.isEnabled = false
-                    }
-                    exchangeCodeForToken(authCode, codeVerifier, thenSign = true)
-                } else {
-                    showError("Login failed: missing auth data")
-                    resetToGuestState()
-                }
-            } else {
-                val error = result.data?.getStringExtra(KeycloakWebViewActivity.EXTRA_ERROR)
-                runOnUiThread {
-                    if (error != null) showError("Login failed: $error")
-                    resetToGuestState()
-                }
-            }
-        }
 
     // ── Lifecycle ──────────────────────────────────────────────────────────────
 
@@ -426,8 +404,11 @@ class PdfPreviewActivity : AppCompatActivity() {
                 else -> {
                     btnLoginAndSign.text      = "Opening login..."
                     btnLoginAndSign.isEnabled = false
-                    keycloakLauncher.launch(
-                        Intent(this, KeycloakWebViewActivity::class.java)
+                    startActivity(
+                        Intent(this, AuthActivity::class.java).apply {
+                            putExtra(AuthActivity.KEY_VERIFIER, AuthActivity.generateCodeVerifier())
+                            putExtra(AuthActivity.KEY_CALLER,   AuthActivity.CALLER_PDF)
+                        }
                     )
                 }
             }

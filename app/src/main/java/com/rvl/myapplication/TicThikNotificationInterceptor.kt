@@ -159,6 +159,7 @@ class TicThikNotificationInterceptor : NotificationListenerService() {
         // ── Check ALL three activities ─────────────────────────────────────────
         val anyVisible =
             PdfPreviewActivity.isActivityVisible            ||
+                    AuthActivity.isActivityVisible   ||
                     KeycloakWebViewActivity.isActivityVisible       ||
                     TransferConfirmationActivity.isActivityVisible  // ← THE CRITICAL FIX
 

@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="28" />
@@ -29,29 +28,69 @@
                 android:resource="@xml/file_provider_paths" />
         </provider>
 
-        <activity
-            android:name=".PdfPreviewActivity"
-            android:exported="false"
-            android:launchMode="standard" />
-
-        <activity
-            android:name=".KeycloakWebViewActivity"
-            android:exported="false" />
-
+        <!-- LAUNCHER -->
         <activity
             android:name=".TransferMoneyActivity"
             android:exported="true"
-            android:launchMode="standard">
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+        <!--
+            AuthActivity — redirect URI receiver for Custom Tab PKCE.
+
+            KEY FIX: launchMode="singleTask" + android:taskAffinity=""
+
+            WHY singleTask (not singleTop):
+              Chrome Custom Tab runs in a DIFFERENT TASK from your app.
+              When myapp://callback arrives, Android searches for an existing
+              AuthActivity instance. With singleTop it can't find one in the
+              Chrome task and creates a NEW instance there — which has no
+              verifier and fails. With singleTask + empty taskAffinity,
+              AuthActivity lives in its own isolated task. Android always
+              finds the correct instance and routes the callback via
+              onNewIntent(). The "singleTask clears the task" behaviour only
+              applies when it shares taskAffinity with the caller — the empty
+              taskAffinity here prevents that entirely.
+
+            android:taskAffinity=""
+              Empty string gives AuthActivity its own task affinity, fully
+              isolated from both the app task and the Chrome task.
+
+            exported="true"   — required so the OS can deliver the redirect.
+            theme=Translucent — activity is invisible; only the Custom Tab shows.
+        -->
+        <activity
+            android:name=".AuthActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            android:excludeFromRecents="true"
+            android:theme="@style/Theme.Transparent">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="myapp"
+                    android:host="callback" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".PdfPreviewActivity"
+            android:exported="false"
+            android:launchMode="standard" />
+
         <activity
             android:name=".TransferConfirmationActivity"
             android:exported="false"
-            android:launchMode="standard" />
+            android:launchMode="standard"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
 
         <activity
             android:name=".TransferSuccessActivity"
